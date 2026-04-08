@@ -36,7 +36,7 @@ class Config:
             setattr(self, k.upper(), v)
 
         # 动态使用传入的数据集名称
-        self.PRETRAINED_PATH = self.PRETRAINED_PATH or os.path.join(self.BASE_PATH, "checkpoints12", self.DATASET, "sft_checkpoints/best_checkpoint.pth")
+        self.PRETRAINED_PATH = self.PRETRAINED_PATH or os.path.join(self.BASE_PATH, "results", self.DATASET, "sft_checkpoints/best_checkpoint.pth")
         self.DATA_DIR_LOO = self.DATA_DIR_LOO or os.path.join(self.BASE_PATH, "data/processed_data", self.DATASET, "processed_loo")
         self.DIN_SAVE_PATH = self.DIN_SAVE_PATH or os.path.join(self.BASE_PATH, "DIN/checkpoint", self.DATASET, "best_model_fixed.pth")
         self.K_LIST_EVAL = [5, 10]
@@ -74,8 +74,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", type=str, default="Beauty", help="Dataset name")
     parser.add_argument("--mode", type=str, default="SFT", choices=["SFT"] + list(RL_MODES))
-    parser.add_argument("--base_path", type=str, default="/project-share/zhengpengfei/project/public_data/model/onerec_sid/onerec/amazon-toys_update")
-    parser.add_argument("--t5_model_path", type=str, default="/project-share/zhengpengfei/project/public_data/model/google_t5/t5-base")
+    parser.add_argument("--base_path", type=str, default="..")
+    parser.add_argument("--t5_model_path", type=str, default="t5-base")
     
     parser.add_argument("--batch_size", type=int, default=128)
     parser.add_argument("--learning_rate", type=float, default=1e-3)
