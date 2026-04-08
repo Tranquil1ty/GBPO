@@ -13,7 +13,7 @@ RUN_TYPE=${3:-"nohup"}     # 运行方式: torchrun (前台) / nohup (后台)
 BASE_PATH=".."
 
 # --- 3. 构造 Python 参数 ---
-PY_ARGS="--dataset $DATASET --mode $MODE --base_path $BASE_PATH"
+PY_ARGS="--dataset $DATASET --mode $MODE --base_path $BASE_PATH --t5_model_path ${BASE_PATH}/models/t5-base"
 
 BATCH_SIZE=128
 LR="1e-3"
