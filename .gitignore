@@ -1,0 +1,12 @@
+/data/processed_data
+/models
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*llama*.npy
+/logs
+/DIN/checkpoint
+/logs_rl
+/checkpoints
+/checkpoints*
