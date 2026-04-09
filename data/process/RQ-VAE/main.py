@@ -19,7 +19,7 @@ def parse_args():
     parser.add_argument('--lr', type=float, default=1e-3, help='learning rate')
     parser.add_argument('--epochs', type=int, default=20000, help='number of epochs')
     parser.add_argument('--batch_size', type=int, default=2048, help='batch size')
-    parser.add_argument('--num_workers', type=int, default=4, )
+    parser.add_argument('--num_workers', type=int, default=0, )
     parser.add_argument('--eval_step', type=int, default=2000, help='eval step')
     parser.add_argument('--learner', type=str, default="AdamW", help='optimizer')
     parser.add_argument("--data_path", type=str, default="../data", help="Input data path.")
