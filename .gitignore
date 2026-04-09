@@ -10,3 +10,5 @@ __pycache__/
 /logs_rl
 /checkpoints
 /checkpoints*
+/data_b
+/results
