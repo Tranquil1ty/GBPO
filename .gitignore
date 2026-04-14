@@ -16,7 +16,7 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
-*llama*.npy
+*.emb-llama-td.npy
 /logs
 /DIN/checkpoint
 /logs_rl
