@@ -29,8 +29,12 @@ for i in "${!datasets[@]}"; do
     dataset=${datasets[$i]}
     gpu=${gpus[$i]}
     emb_file="../../../data/raw_data/$dataset/${dataset}.emb-llama-td.npy"
+    SID_PKL="../../../data/processed_data/${dataset}/code2item_rkmeans_4L_llama.pkl"
+    SID_NPY="../../../data/processed_data/${dataset}/item2code_rkmeans_4L_llama.npy"
 
-    if [ -f "$emb_file" ]; then
+    if [ -f "$SID_PKL" ] && [ -f "$SID_NPY" ]; then
+        echo "$dataset: Mapping files exist, skipping embedding generation."
+    elif [ -f "$emb_file" ]; then
         echo "$dataset: $emb_file exists, skipping."
     else
         CUDA_VISIBLE_DEVICES=$gpu nohup python -u generate_emb.py \
@@ -50,8 +54,12 @@ for i in "${!datasets[@]}"; do
     gpu=${gpus[$i]}
     CKPT_DIR="../../../data/processed_data/${dataset}/rq_ckpt"
     DATA_PATH="../../../data/raw_data/${dataset}/${dataset}.emb-llama-td.npy"
+    SID_PKL="../../../data/processed_data/${dataset}/code2item_rkmeans_4L_llama.pkl"
+    SID_NPY="../../../data/processed_data/${dataset}/item2code_rkmeans_4L_llama.npy"
 
-    if [ -d "$CKPT_DIR" ] && [ "$(ls -A "$CKPT_DIR" 2>/dev/null)" ]; then
+    if [ -f "$SID_PKL" ] && [ -f "$SID_NPY" ]; then
+        echo "$dataset: Mapping files (.pkl + .npy) exist, skipping RQ-VAE training."
+    elif [ -d "$CKPT_DIR" ] && [ "$(ls -A "$CKPT_DIR" 2>/dev/null)" ]; then
         echo "$dataset: $CKPT_DIR exists and not empty, skipping."
     else
         echo "Starting $dataset RQ-VAE training on GPU $gpu..."
@@ -76,7 +84,9 @@ for i in "${!datasets[@]}"; do
     gpu=${gpus[$i]}
     OUT_DIR="../../../data/processed_data/${dataset}"
     
-    if [ -f "$OUT_DIR/${dataset}_llama.pkl" ] && [ -f "$OUT_DIR/${dataset}_llama.npy" ]; then
+    if [ -f "$OUT_DIR/code2item_rkmeans_4L_llama.pkl" ] && [ -f "$OUT_DIR/item2code_rkmeans_4L_llama.npy" ]; then
+        echo "$dataset: Mapping files (.pkl + .npy) exist, skipping SID generation."
+    elif [ -f "$OUT_DIR/${dataset}_llama.pkl" ] && [ -f "$OUT_DIR/${dataset}_llama.npy" ]; then
         echo "$dataset: SID files exist, skipping."
     else
         CKPT_BASE="$OUT_DIR/rq_ckpt"
