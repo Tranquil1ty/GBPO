@@ -1,4 +1,16 @@
-/data/processed_data
+/data/processed_data/*
+!/data/processed_data/Beauty/
+!/data/processed_data/Sports/
+!/data/processed_data/Toys/
+/data/processed_data/Beauty/*
+!/data/processed_data/Beauty/item2code_rkmeans_4L_llama.npy
+!/data/processed_data/Beauty/code2item_rkmeans_4L_llama.pkl
+/data/processed_data/Sports/*
+!/data/processed_data/Sports/item2code_rkmeans_4L_llama.npy
+!/data/processed_data/Sports/code2item_rkmeans_4L_llama.pkl
+/data/processed_data/Toys/*
+!/data/processed_data/Toys/item2code_rkmeans_4L_llama.npy
+!/data/processed_data/Toys/code2item_rkmeans_4L_llama.pkl
 /models
 __pycache__/
 *.pyc
