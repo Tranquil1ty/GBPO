@@ -24,3 +24,5 @@ __pycache__/
 /checkpoints*
 /data_b
 /results
+git_setup.md
+readme
