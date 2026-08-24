@@ -1,0 +1,19 @@
+# Runtime environment for GBPO training (Python 3.10 recommended).
+# The extra index selects the CUDA 12.4 PyTorch wheels for the A100 machines.
+--extra-index-url https://download.pytorch.org/whl/cu124
+
+# Training and distributed execution
+torch==2.5.1+cu124
+
+# Hugging Face T5 model and tokenizer support
+transformers==4.48.3
+sentencepiece==0.2.0
+
+# Data processing, RQ-VAE clustering, and progress reporting
+numpy==1.26.4
+scikit-learn==1.5.2
+tqdm==4.67.1
+
+# `flash-attn` is optional. The code falls back to standard PyTorch attention
+# when it is absent. Install it separately after the packages above if desired:
+#   pip install flash-attn --no-build-isolation
