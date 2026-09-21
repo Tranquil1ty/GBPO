@@ -6,7 +6,7 @@
 torch==2.5.1+cu124
 
 # Hugging Face T5 model and tokenizer support
-transformers==4.48.3
+transformers==4.50.3
 sentencepiece==0.2.0
 
 # Data processing, RQ-VAE clustering, and progress reporting
