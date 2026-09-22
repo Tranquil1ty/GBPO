@@ -3,7 +3,7 @@
 # --- 1. 运行环境 ---
 export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
 GPUS=8
-PORT=29501
+PORT=${PORT:-29501}
 SCRIPT="./main.py"
 
 # --- 2. 基础配置 ---
